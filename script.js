@@ -11,7 +11,6 @@ const modalTitle = document.querySelector('.modal__title');
 const modalInfo = document.querySelector('.modal__info ul');
 const modalDesc = document.querySelector('.modal__desc');
 const modalLink = document.querySelector('.modal__link');
-let err;
 let anime;
 
 function showModal() {
