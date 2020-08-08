@@ -1,7 +1,0 @@
--Modal:
-    -title,
-    -episodes number,
-    -rated,
-    -score,
-    -synopsis,
-    -read more (url)
