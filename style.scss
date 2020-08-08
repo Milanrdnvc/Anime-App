@@ -18,6 +18,22 @@ p {
     text-align: center;
 }
 
+.blur-body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: -1;
+    transform: scale(0);
+    transition: transform .01s ease;
+}
+
+.blur-body.active {
+    transform: scale(1);
+}
+
 .anime-image-grid {
     max-width: 1600px;
     margin: auto;
@@ -26,6 +42,7 @@ p {
     justify-items: center;
     align-items: stretch;
     gap: 20px;
+    position: relative;
 
     img {
         cursor: pointer;
@@ -55,5 +72,81 @@ p {
             border: 1px solid black;
             font-size: 1.2rem;
         }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 50vw;
+    margin: auto;
+    font-size: 1.5rem;
+    transition: transform .3s ease;
+
+    &.active{
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__close-btn {
+        cursor: pointer;
+        font-size: 50px;
+    }
+
+    &__info {
+        ul {
+            list-style: circle;
+            padding: 0 2rem;
+        }
+    }
+
+    &__link {
+        margin-top: 10px;
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            border: 2px solid white;
+            border-radius: 2px;
+            padding: 10px;
+            display: inline-block;
+
+            &:hover {
+                color: black;
+                background-color: white;
+                border: 2px solid black;
+                transition: color .3s ease, background-color .3s ease, border-color .3s ease;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 300px) {
+    html {
+        font-size: 7px;
     }
 }
