@@ -1,5 +1,9 @@
-const imgGrid = document.querySelector('.anime-image-grid');
+const main = document.querySelector('main');
 const search = document.querySelector('input');
+const searchWrapper = document.querySelector('.search-wrapper');
+const headingWrapper = document.querySelector('.heading-wrapper');
+const headingSearchWrapper = document.querySelector('.heading-search-wrapper');
+const imgGrid = document.querySelector('.anime-image-grid');
 const modal = document.querySelector('.modal');
 const blurBody = document.querySelector('.blur-body');
 const modalClose = document.querySelector('.modal__close-btn');
@@ -10,18 +14,24 @@ const modalLink = document.querySelector('.modal__link');
 let err;
 let anime;
 
-modalClose.addEventListener('click', hideModal)
-
 function showModal() {
     modal.classList.add('active');
     blurBody.classList.add('active');
     imgGrid.style.zIndex = '-2';
+    searchWrapper.style.zIndex = '-2';
+    headingWrapper.style.zIndex = '-2';
 }
 
-function hideModal() {
+function hideModal(e) {
+    if (e.target.classList[0] !== 'main' && e.target.classList[0] !== 'modal__close-btn' && e.target.classList[0] !== 'heading-search-wrapper') {
+        return;
+    }
+    
     modal.classList.remove('active');
     blurBody.classList.remove('active');
     imgGrid.style.zIndex = '0';  
+    searchWrapper.style.zIndex = '0';
+    headingWrapper.style.zIndex = '0';
 }
 
 function fetchAnime(api) {
@@ -70,6 +80,9 @@ search.addEventListener('keydown', e => {
         search.value = '';
     }
 });
+
+modalClose.addEventListener('click', hideModal);
+main.addEventListener('click', hideModal);
 
 
 
