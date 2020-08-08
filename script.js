@@ -44,7 +44,6 @@ function fetchAnime(api) {
 }
 
 function renderDOM(response, err) {
-    console.log(response.results);
     if (err) {
         let para = document.createElement('p');
         para.innerText = `Couldn't fetch the data UwU: ${err.message}`;
